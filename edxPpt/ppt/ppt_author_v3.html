@@ -2,8 +2,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <html>
 	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/dot-luv/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+
 	<script src="style/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
 	<script src="style/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
+
 	<body>
 		<script>
 			var tag = document.createElement('script');
@@ -16,7 +19,7 @@
 			function onYouTubeIframeAPIReady() {
 				player = new YT.Player('player', {
 					height : '240',
-					width : '100%',
+					width : '480',
 					videoId : 'JCQs6JROANE',
 					events : {
 						'onStateChange' : onPlayerStateChange
@@ -25,7 +28,7 @@
 
 				player2 = new YT.Player('player2', {
 					height : '480',
-					width : '100%',
+					width : '640',
 					videoId : 'Ib7IMt0CUF4',
 					events : {
 						'onStateChange' : onPlayerStateChange
@@ -63,13 +66,23 @@
 				document.getElementById("ctime").textContent = ctime + " 秒";
 			}
 
+			// function newLink() {
+			// var button = document.createElement("button");
+			// button.type = "button";
+			// button.textContent = ctime;
+			//
+			// var tag = document.getElementById("tag");
+			// tag.appendChild(button);
+			// }
+
 			function newLink() {
-				var button = document.createElement("button");
+				var button = document.createElement("li");
 				button.type = "button";
 				button.textContent = ctime;
-
+				button.className = "ui-widget-content";
 				var tag = document.getElementById("tag");
 				tag.appendChild(button);
+				setTagStyle();
 			}
 
 			function saveAll() {
@@ -94,8 +107,14 @@
 
 			function setTagStyle() {
 				$(function() {
-					$("#sortable").sortable();
-					$("#sortable").disableSelection();
+					$("#tag").selectable();
+					//$("#tag").disableSelection();
+				});
+
+				$("#tag li").hover(function() {
+					$(this).addClass('ui-state-hover');
+				}, function() {
+					$(this).removeClass('ui-state-hover');
 				});
 			}
 
@@ -104,38 +123,35 @@
 
 		</script>
 
-		<table border="1">
-			<tr>
-				<td><div id="player"></div></td>
-				<td rowspan="2"><div id="player2"></div></td>
-			</tr>
-			<tr>
-				<td>
-				<p>
-					<input type="button" value="Play" onclick="javascript:playVideo()">
-					<input type="button" value="Pause" onclick="javascript:pauseVideo()">
-					<input type="button" value="Tag" onclick="javascript:newLink()">
-					<button type="button" onclick="javascript:saveAll()">
-						Save
-					</button>
-					<br>
-				</p>
-				<p>
-					停留時間:<div id="ctime"></div>
-				</p>
-				<p>
-					Tag:
-					<br>
-					<ul id="tag">
-						<li class="ui-state-default">
-							<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1
-						</li>
-						<li class="ui-state-default">
-							<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2
-						</li>
-					</ul>
-				</p></td>
-			</tr>
-		</table>
+		<div id="mainDiv">
+			<div id="Player1Div">
+				<div id="player"></div>
+				<div>
+					<p class="ui-labels">
+						<input type="button" value="Play" onclick="javascript:playVideo()">
+						<input type="button" value="Pause" onclick="javascript:pauseVideo()">
+						<input type="button" value="Tag" onclick="javascript:newLink()">
+						<button type="button" onclick="javascript:saveAll()">
+							Save
+						</button>
+						<br><br>
+						<a> 停留時間:<a id="ctime">0秒</a> </a>
+					</p>
+
+				</div>
+
+				<div id="TagsDiv" >
+					<a class="ui-labels">
+						Tag:
+					</a>
+					<div id="tags">
+						<ol id="tag"></ol>
+					</div>
+				</div>
+			</div>
+			<div id="Player2Div">
+				<div id="player2"></div>
+			</div>
+		</div>
 	</body>
 </html>
