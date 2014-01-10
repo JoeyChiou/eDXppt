@@ -1,112 +1,141 @@
 <!DOCTYPE html>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <html>
-  <body>	
-	<script>
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
+	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/dot-luv/jquery-ui-1.10.3.custom.css">
+	<script src="style/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
+	<script src="style/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
+	<body>
+		<script>
+			var tag = document.createElement('script');
+			tag.src = "https://www.youtube.com/iframe_api";
 
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      var player, player2;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-		  height: '240',
-          width: '320',
-		  videoId: 'JCQs6JROANE',
-		  events: {
-            'onStateChange': onPlayerStateChange
-          }
-        });
-		
-		player2 = new YT.Player('player2', {
-		  height: '480',
-          width: '640',
-		  videoId: 'Ib7IMt0CUF4',
-		  events: {
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-	  
-      function playVideo(){
-		player.playVideo();
-		player2.playVideo();
-	  }
-	  
-	  function pauseVideo() {
-		player.pauseVideo();
-		player2.pauseVideo();
-		getCurrentTime();
-	  }
-	  
-	  var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(pauseVideo, 0000);
-          done = true;
-        }
-      }
-	  
-	  function stopVideo() {
-        player.stopVideo();
-		player2.stopVideo();
-      }
-	  
-	  var ctime;
-	  function getCurrentTime(){
-		ctime = player.getCurrentTime();
-		document.getElementById("ctime").textContent = ctime + " 秒";
-	  }
-	  
-	  function newLink(){
-		var button = document.createElement("button");
-		button.type = "button";
-		button.textContent = ctime;
-		
-		var tag = document.getElementById("tag");
-		tag.appendChild(button);
-	  }
-	  
-	  function saveAll(){
-		var tag = document.getElementById("tag").childNodes;
-		//var tag_arr = new Array();
-		var url = "mark.php?tag_list=";
-			//$tag = array();
-		
-		for(var i=0;i<tag.length;i++){
-			url += tag[i].textContent+",";
-		}
-		//var url = "mark.php?"+tag_list;
-		alert(url);
-		location.replace(url);
-	  }
-    </script>
-	
-	<table border="1">
-		<tr>
-			<td><div id="player"></div></td>
-			<td rowspan="2"><div id="player2"></div></td>			
-		</tr>
-		<tr>
-			<td>
-			<p>
-			<input type="button" value="Play" onclick="javascript:playVideo()">
-			<input type="button" value="Pause" onclick="javascript:pauseVideo()">
-			<input type="button" value="Tag" onclick="javascript:newLink()">
-			<button type="button" onclick="javascript:saveAll()">Save</button>
-			<br>
-			</p>
-			<p>
-			停留時間:<div id="ctime"></div>
-			</p>
-			<p>
-			Tag:<br>
-			<div id="tag"></div>
-			</p>
-			</td>
-		</tr>
-	</table>
-  </body>
+			var player, player2;
+			function onYouTubeIframeAPIReady() {
+				player = new YT.Player('player', {
+					height : '240',
+					width : '100%',
+					videoId : 'JCQs6JROANE',
+					events : {
+						'onStateChange' : onPlayerStateChange
+					}
+				});
+
+				player2 = new YT.Player('player2', {
+					height : '480',
+					width : '100%',
+					videoId : 'Ib7IMt0CUF4',
+					events : {
+						'onStateChange' : onPlayerStateChange
+					}
+				});
+			}
+
+			function playVideo() {
+				player.playVideo();
+				player2.playVideo();
+			}
+
+			function pauseVideo() {
+				player.pauseVideo();
+				player2.pauseVideo();
+				getCurrentTime();
+			}
+
+			var done = false;
+			function onPlayerStateChange(event) {
+				if (event.data == YT.PlayerState.PLAYING && !done) {
+					setTimeout(pauseVideo, 0000);
+					done = true;
+				}
+			}
+
+			function stopVideo() {
+				player.stopVideo();
+				player2.stopVideo();
+			}
+
+			var ctime;
+			function getCurrentTime() {
+				ctime = player.getCurrentTime();
+				document.getElementById("ctime").textContent = ctime + " 秒";
+			}
+
+			function newLink() {
+				var button = document.createElement("button");
+				button.type = "button";
+				button.textContent = ctime;
+
+				var tag = document.getElementById("tag");
+				tag.appendChild(button);
+			}
+
+			function saveAll() {
+				var tag = document.getElementById("tag").childNodes;
+				//var tag_arr = new Array();
+				var url = "mark.php?tag_list=";
+				//$tag = array();
+
+				for (var i = 0; i < tag.length; i++) {
+					url += tag[i].textContent + ",";
+				}
+				//var url = "mark.php?"+tag_list;
+				alert(url);
+				location.replace(url);
+			}
+
+			function setButtonStyle() {
+				$(function() {
+					$("input[type=button], a, button").button();
+				});
+			}
+
+			function setTagStyle() {
+				$(function() {
+					$("#sortable").sortable();
+					$("#sortable").disableSelection();
+				});
+			}
+
+			setButtonStyle();
+			setTagStyle();
+
+		</script>
+
+		<table border="1">
+			<tr>
+				<td><div id="player"></div></td>
+				<td rowspan="2"><div id="player2"></div></td>
+			</tr>
+			<tr>
+				<td>
+				<p>
+					<input type="button" value="Play" onclick="javascript:playVideo()">
+					<input type="button" value="Pause" onclick="javascript:pauseVideo()">
+					<input type="button" value="Tag" onclick="javascript:newLink()">
+					<button type="button" onclick="javascript:saveAll()">
+						Save
+					</button>
+					<br>
+				</p>
+				<p>
+					停留時間:<div id="ctime"></div>
+				</p>
+				<p>
+					Tag:
+					<br>
+					<ul id="tag">
+						<li class="ui-state-default">
+							<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1
+						</li>
+						<li class="ui-state-default">
+							<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2
+						</li>
+					</ul>
+				</p></td>
+			</tr>
+		</table>
+	</body>
 </html>
