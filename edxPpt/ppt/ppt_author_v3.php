@@ -1,95 +1,54 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <html>
-  <body>	
-	<script>
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
+	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/dot-luv/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
 
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	<script src="style/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
+	<script src="style/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
+	<script src="js/author.js"></script>
 
-      var player, player2;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-		  height: '240',
-          width: '320',
-		  videoId: 'JCQs6JROANE',
-        });
-		
-		player2 = new YT.Player('player2', {
-		  height: '480',
-          width: '640',
-		  videoId: 'Ib7IMt0CUF4',
-        });
-      }
-	  
-      function playVideo(){
-		player.playVideo();
-		player2.playVideo();
-	  }
-	  
-	  function pauseVideo() {
-		player.pauseVideo();
-		player2.pauseVideo();
-		getCurrentTime();
-	  }
-	  
-	  function stopVideo() {
-        player.stopVideo();
-		player2.stopVideo();
-      }
-	  
-	  var ctime;
-	  function getCurrentTime(){
-		ctime = player.getCurrentTime();
-		document.getElementById("ctime").textContent = ctime + " 秒";
-	  }
-	  
-	  function newLink(){
-		var button = document.createElement("button");
-		button.type = "button";
-		button.textContent = ctime + " 秒";
-		
-		var tag = document.getElementById("tag");
-		tag.appendChild(button);
-	  }
-	  
-	  function saveAll(){
-		var tag = document.getElementById("tag").childNodes;
-		var tag_arr = new Array();
-				for(var i=0;i<tag.length;i++){
-			tag_arr[i] = tag[i].textContent;
-		}
-		alert("Save Success!");
-		//var url = "mark.php?"+tag_arr;
-		//location.replace(url);
-	  }
-    </script>
-	
-	<table border="1">
-		<tr>
-			<td><div id="player"></div></td>
-			<td rowspan="2"><div id="player2"></div></td>			
-		</tr>
-		<tr>
-			<td>
-			<p>
-			<input type="button" value="Play" onclick="javascript:playVideo()">
-			<input type="button" value="Pause" onclick="javascript:pauseVideo()">
-			<input type="button" value="Tag" onclick="javascript:newLink()">
-			<button type="button" onclick="javascript:saveAll()">Save</button>
-			<br>
-			</p>
-			<p>
-			停留時間:<div id="ctime"></div>
-			</p>
-			<p>
-			Tag:<br>
-			<div id="tag"></div>
-			</p>
-			</td>
-		</tr>
-	</table>
-  </body>
+	<body>
+		<div id="mainDiv">
+			<div id="Player1Div">
+				<div id="player" class="player"></div>
+				<div id="TagsDiv" >
+					<a class="ui-labels"> Tag: </a>
+					<div id="tags">
+						<ol id="tag"></ol>
+					</div>
+				</div>
+			</div>
+			<div id="Player2Div">
+				<div id="player2" class="player"></div>
+				<p class="ui-labels controls">
+					<button id="play" onclick="javascript:playVideo()">
+						Play
+					</button>
+					<button id="stop" onclick="javascript:stopVideo()">
+						Stop
+					</button>
+					<button id="pause" onclick="javascript:pauseVideo()">
+						Pause
+					</button>
+
+					<button id="beginning" onclick="javascript:beginningVideo()">
+						Beginning
+					</button>
+					<button id="end" onclick="javascript:endVideo()">
+						End
+					</button>
+
+					<input type="button" value="Tag" onclick="javascript:newLink()">
+					<button type="button" onclick="javascript:saveAll()">
+						Save
+					</button>
+					<br>
+					<br>
+					<a> 停留時間:<a id="ctime">0秒</a> </a>
+				</p>
+			</div>
+		</div>
+
+	</body>
 </html>

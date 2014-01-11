@@ -1,39 +1,42 @@
 #mainDiv {
 	background-color: #555555;
 	/*width: 100%;*/
-	 height:100%;
+	height: 100%;
 	display: inline-block;
 	border: 8px solid #363636;
-	/*float: left;*/
 }
 #Player1Div {
-	background-color: #D3D3D3;
-	width: 480px;
-	height: 45%;
-	float: left;
-	display: block;
-	border-right: 10px solid #363636;
-}
-.ui-labels{
-	margin:10px;
-	padding-top:.1em; 
-	padding-bottom:.1em; 
-}
-#TagsDiv {
-	background-color: #BCD5E6;
-	width: 100%;
-	/*height:400px;*/
-	/*overflow: auto;*/
-	/*overflow: hidden;*/
-	/*display: block;*/
-	
-}
-#Player2Div {
-	background-color: #C2CCD1;
-	width: auto;
+	background-color: rgba(44, 72, 120, 1);
+	/*width: 480px;*/
 	height: 100%;
 	float: left;
-	/*display: block;*/
+	display: block;
+	/*display: table;*/
+	vertical-align: top;
+	/*border-right: 10px solid #363636;*/
+	/*border: 1px solid red;*/
+}
+.ui-labels {
+	margin: 10px;
+	/*padding-top: .1em;
+	padding-bottom: .1em;
+	vertical-align: top;*/
+}
+.controls {
+	margin-left:15px;
+	margin-top:-2%; 
+}
+#TagsDiv {
+	/*float:none;*/
+	background-color: rgba(54, 145, 236, 1);
+	height: 100%;
+}
+#Player2Div {
+	background-color: rgba(21, 49, 114, 1);
+	/*width: 100%;*/
+	height: 100%;
+	float: left;
+	display: block;
 }
 
 #feedback {
@@ -44,12 +47,12 @@
 }
 
 .ui-state-hover {
-    color: orange;
+	color: orange;
 }
 
 #tag {
 	list-style-type: none;
-	margin-left:5px; 
+	margin-left: 5px;
 	padding: 0;
 }
 #tag li {
@@ -57,11 +60,17 @@
 	padding: 0.5em;
 	font-size: 1.4em;
 	height: 12px;
-	line-height:12px;
+	line-height: 12px;
 	/*text-align:center;*/
 }
 #tags {
 	overflow-y: auto;
 	width: 100%;
-	height:150px;
+	height: 303px;
 }
+
+.player {
+	margin: 15px;
+	/*border:#0000FF 25px solid; */
+}
+
