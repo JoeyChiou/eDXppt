@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <html>
-	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/dot-luv/jquery-ui-1.10.3.custom.css">
+	<!-- <link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/dot-luv/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/cupertino/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/humanity/jquery-ui-1.10.3.custom.css"> -->
+	<link rel="stylesheet" type="text/css" href="style/jquery-ui-1.10.3.custom/css/ui-darkness/jquery-ui-1.10.3.custom.css">
+	
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<script src="style/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
@@ -9,19 +13,19 @@
 	<script src="js/author.js"></script>
 
 	<body>
-		<div id="mainDiv">
-			<div id="Player1Div">
+		<div id="mainDiv" class="ui-widget-content">
+			<div id="Player1Div" class="ui-state-default">
 				<div id="player" class="player"></div>
-				<div id="TagsDiv" >
-					<a class="ui-labels"> Tag: </a>
+				<div id="TagsDiv" class="ui-widget-content">
+					<p class="ui-labels ui-widget-header">Tag</p>
 					<div id="tags">
 						<ol id="tag"></ol>
 					</div>
 				</div>
 			</div>
-			<div id="Player2Div">
+			<div id="Player2Div" class="ui-state-focus">
 				<div id="player2" class="player"></div>
-				<p class="ui-labels controls">
+				<p class="ui-labels controls ui-widget-content">
 					<button id="play" onclick="javascript:playVideo()">
 						Play
 					</button>
@@ -45,7 +49,8 @@
 					</button>
 					<br>
 					<br>
-					<a> 停留時間:<a id="ctime">0秒</a> </a>
+					<a class="ui-state-highlight"> 停留時間: </a>
+					<a id="ctime" class="ui-state-error">0秒</a>
 				</p>
 			</div>
 		</div>

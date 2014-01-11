@@ -1,12 +1,12 @@
 #mainDiv {
-	background-color: #555555;
+	/*background-color: #555555;*/
 	/*width: 100%;*/
 	height: 100%;
 	display: inline-block;
-	border: 8px solid #363636;
+	/*border: 8px solid #363636;*/
 }
 #Player1Div {
-	background-color: rgba(44, 72, 120, 1);
+	/*background-color: rgba(44, 72, 120, 1);*/
 	/*width: 480px;*/
 	height: 100%;
 	float: left;
@@ -18,21 +18,20 @@
 }
 .ui-labels {
 	margin: 10px;
-	/*padding-top: .1em;
-	padding-bottom: .1em;
-	vertical-align: top;*/
+	padding: 10px;
 }
 .controls {
 	margin-left:15px;
-	margin-top:-2%; 
+	margin-top:-1.2%; 
 }
 #TagsDiv {
 	/*float:none;*/
-	background-color: rgba(54, 145, 236, 1);
+	/*background-color: rgba(54, 145, 236, 1);*/
 	height: 100%;
+	
 }
 #Player2Div {
-	background-color: rgba(21, 49, 114, 1);
+	/*background-color: rgba(21, 49, 114, 1);*/
 	/*width: 100%;*/
 	height: 100%;
 	float: left;
@@ -67,10 +66,11 @@
 	overflow-y: auto;
 	width: 100%;
 	height: 303px;
+	margin-top:-2.2%; 
 }
 
 .player {
-	margin: 15px;
+	margin: 8px;
 	/*border:#0000FF 25px solid; */
 }
 
