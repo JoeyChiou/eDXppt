@@ -1,0 +1,36 @@
+#AdditionalButton {
+	position: absolute;
+	z-index: 5;
+	left: 15px;
+	top: 400px;
+}
+
+#MVA_PPT_SUBIMAGE {
+	position: absolute;
+	width: 700px;
+	height: 125px;
+	z-index: 6;
+	left: 53px;
+	top: 476px;
+	OVERFLOW-Y: hidden;
+	OVERFLOW-X: auto;
+	white-space:nowrap; 
+	/*scrollbar-3d-light-color: fffec1;
+	 scrollbar-arrow-color: #334d00;
+	 scrollbar-base-color: #fffec1;
+	 scrollbar-dark-shadow-color: black;
+	 scrollbar-face-color: #8fb337;
+	 scrollbar-highlight-color: #E5FFD3;
+	 scrollbar-shadow-color: #337B00;*/
+}
+
+.tag {
+	display: inline-block;
+	margin: 9px;
+	padding: 0.5em;
+	font-size: 1.4em;
+	height: 70px;
+	width: 120px;
+	text-align:center;
+	line-height: 60px;
+}
