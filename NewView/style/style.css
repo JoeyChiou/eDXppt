@@ -1,17 +1,20 @@
 #AdditionalButton {
 	position: absolute;
 	z-index: 5;
-	left: 15px;
-	top: 400px;
+	/*left: 15px;
+	top: 400px;*/
 }
 
 #MVA_PPT_SUBIMAGE {
 	position: absolute;
-	width: 700px;
-	height: 125px;
 	z-index: 6;
+	
+	/*width: 700px;
+	height: 125px;
 	left: 53px;
-	top: 476px;
+	top: 476px;*/
+	
+	
 	OVERFLOW-Y: hidden;
 	OVERFLOW-X: auto;
 	white-space:nowrap; 
@@ -22,6 +25,10 @@
 	 scrollbar-face-color: #8fb337;
 	 scrollbar-highlight-color: #E5FFD3;
 	 scrollbar-shadow-color: #337B00;*/
+}
+
+.button{
+	cursor: pointer; cursor: hand; 
 }
 
 .tag {

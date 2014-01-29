@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 	<HEAD>
+		<title>Default</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<!--MVA_SCRIPT-->
 		<script src="../style/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
@@ -35,27 +36,25 @@
 				<td>&nbsp;</td>
 			</tr>
 		</table>
-		<div id="ctime" name="MVA_TIME" style="position:absolute; width:152px; height:23px; z-index:7; left: 19px; top: 247px;"></div>
-		<div id="Play" style="position:absolute; width:50px; height:23px; z-index:1; left: 18px; top: 292px;"><img src="Skin_Img/btn_play.jpg" name="MVA_BTN_PLAY" width="50" height="23" id="MVA_BTN_PLAY">
+		<div id="MVA_TIME" name="MVA_TIME" style="position:absolute; width:152px; height:23px; z-index:7; left: 19px; top: 247px;"></div>
+		<div class="button" id="Play" style="position:absolute; width:50px; height:23px; z-index:1; left: 18px; top: 292px;"><img src="Skin_Img/btn_play.jpg" name="MVA_BTN_PLAY" width="50" height="23" id="MVA_BTN_PLAY">
 		</div>
-		<div id="Pause" style="position:absolute; width:50px; height:23px; z-index:2; left: 69px; top: 292px;" ><img src="Skin_Img/btn_pause.jpg" name="MVA_BTN_PAUSE" width="50" height="23" id="MVA_BTN_PAUSE">
+		<div class="button" id="Pause" style="position:absolute; width:50px; height:23px; z-index:2; left: 69px; top: 292px;" ><img src="Skin_Img/btn_pause.jpg" name="MVA_BTN_PAUSE" width="50" height="23" id="MVA_BTN_PAUSE">
 		</div>
-		<div id="Stop" style="position:absolute; width:49px; height:23px; z-index:3; left: 120px; top: 292px;" ><img src="Skin_Img/btn_stop.jpg" name="MVA_BTN_STOP" width="49" height="23" id="MVA_BTN_STOP">
+		<div class="button" id="Stop" style="position:absolute; width:49px; height:23px; z-index:3; left: 120px; top: 292px;" ><img src="Skin_Img/btn_stop.jpg" name="MVA_BTN_STOP" width="49" height="23" id="MVA_BTN_STOP">
 		</div>
-		<div id="Previous" style="position:absolute; width:59px; height:26px; z-index:4; left: 36px; top: 326px;"><img src="Skin_Img/btn_previous.jpg" name="MVA_BTN_PREVIOUS" width="59" height="26" id="MVA_BTN_PREVIOUS">
+		<div class="button" id="Previous" style="position:absolute; width:59px; height:26px; z-index:4; left: 36px; top: 326px;"><img src="Skin_Img/btn_previous.jpg" name="MVA_BTN_PREVIOUS" width="59" height="26" id="MVA_BTN_PREVIOUS">
 		</div>
-		<div id="Next" style="position:absolute; width:58px; height:26px; z-index:5; left: 95px; top: 326px;"><img src="Skin_Img/btn_next.jpg" name="MVA_BTN_NEXT" width="58" height="26" id="MVA_BTN_NEXT">
+		<div class="button" id="Next" style="position:absolute; width:58px; height:26px; z-index:5; left: 95px; top: 326px;"><img src="Skin_Img/btn_next.jpg" name="MVA_BTN_NEXT" width="58" height="26" id="MVA_BTN_NEXT">
 		</div>
 
-		<div id="AdditionalButton">
+		<div id="AdditionalButton" style="left: 15px;top: 400px;">
 			<input type="button" value="Tag" onclick="javascript:newLink()">
 			<button type="button" onclick="javascript:saveAll()">
 				Save
 			</button>
 		</div>
 
-		<div id="MVA_PPT_SUBIMAGE" name="MVA_PPT_SUBIMAGE">
-			
-		</div>
+		<div id="MVA_PPT_SUBIMAGE" name="MVA_PPT_SUBIMAGE" style="width: 700px;height: 125px;left: 53px;top: 476px;"></div>
 	</BODY>
 </HTML>
