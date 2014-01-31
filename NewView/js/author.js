@@ -5,24 +5,23 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player, player2;
-function onYouTubeIframeAPIReady() {
-	player = new YT.Player('player', {
-		height : '130',
-		width : '154',
-		videoId : 'JCQs6JROANE',
-		playerVars : {
-			controls : 0
-		}
-	});
+function onYouTubeIframeAPIReady() {	
+	player =createPlayer('player','JCQs6JROANE');
+	player2 =createPlayer('player2','Ib7IMt0CUF4');
+}
 
-	player2 = new YT.Player('player2', {
+function createPlayer(divId,videoId){
+	width = $('#'+divId).parent().width();
+	//height = $('#'+divId).parent().height();
+	var player = new YT.Player(divId, {
 		height : '100%',
-		width : '572',
-		videoId : 'Ib7IMt0CUF4',
+		width : width,
+		videoId : videoId,
 		playerVars : {
 			controls : 0
 		}
 	});
+	return player;
 }
 
 function playVideo() {
@@ -52,7 +51,7 @@ function nextVideo() {
 var ctime;
 function getCurrentTime() {
 	ctime = player.getCurrentTime();
-	document.getElementById("ctime").textContent = ctime + " 秒";
+	document.getElementById("MVA_TIME").textContent = ctime + " 秒";
 }
 
 function newLink() {
