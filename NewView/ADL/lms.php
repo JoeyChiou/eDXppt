@@ -44,14 +44,7 @@
 		</div>
 		<div class="button" id="Next" name="MVA_BTN_NEXT" style="position:absolute; width:63px; height:63px; z-index:5; left: 703px; top: 285px;"><img src="skin_img/btn_next.gif" width="63" height="63">
 		</div>
-
-		<form id="form1" method="POST" action="mark.php">
-		<div id="AdditionalButton" style="left: 620px;top: 400px;">
-			<input type="button" value="Tag" onclick="javascript:newLink()">
-			<button type="submit">Save</button>
-		</div>
-		</form>
-
 		<div id="MVA_PPT_SUBIMAGE" name="MVA_PPT_SUBIMAGE" style="width:689px; height:125px; left: 57px; top: 485px;" nowrap ></div>
+		<script>getMarks();</script>
 	</body>
 </html>

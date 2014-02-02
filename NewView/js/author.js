@@ -11,7 +11,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function createPlayer(divId,videoId){
-	width = $('#'+divId).parent().width();
+	width = $('#'+divId).parent().width()-50;
 	//height = $('#'+divId).parent().height();
 	var player = new YT.Player(divId, {
 		height : '100%',
@@ -26,7 +26,14 @@ function createPlayer(divId,videoId){
 
 function playVideo() {
 	player.playVideo();
+	player.pauseVideo();
 	player2.playVideo();
+	player2.pauseVideo();
+	setTimeout("player.playVideo()", 5000);
+	setTimeout("player2.playVideo()", 5000);
+}
+
+function doNothing(){
 }
 
 function pauseVideo() {
@@ -41,11 +48,43 @@ function stopVideo() {
 }
 
 function previousVideo() {
+	alert("1:"+player.getPlayerState()+"2:"+player2.getPlayerState());
 	alert("previousVideo");
 }
 
 function nextVideo() {
+	alert(player.getVideoLoadedFraction());
 	alert("nextVideo");
+}
+
+function getMarks(){
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", "mark.xml", false);
+	xmlhttp.send();
+	xmlDoc = xmlhttp.responseXML;
+				
+	var marks = xmlDoc.getElementsByTagName("Mark");
+	for(i=0;i<marks.length;i++){
+		var button = document.createElement("button");
+		button.type = "button";
+		//button.textContent = marks[i].textContent + " 秒";
+		button.textContent = "Section" + (i+1);
+		//button.className = "ui-widget-content tag";
+		button.setAttribute("onclick","javascript:goMark("+marks[i].textContent+")");
+		var tagContainer = document.getElementById("MVA_PPT_SUBIMAGE");
+		tagContainer.appendChild(button);
+		/*$(function() {
+			$(button).button();
+		});*/
+	}
+}
+
+function goMark(second){
+				player.seekTo(second, true);
+				player.pauseVideo();
+				player2.seekTo(second, true);
+				player2.pauseVideo();
+				playVideo();
 }
 
 var ctime;
@@ -65,18 +104,25 @@ function newLink() {
 	$(function() {
 		$(button).button();
 	});
+	
+	var input = document.createElement("input");
+	input.type = "hidden";
+	input.name = "tag_arr[]";
+	input.value = ctime;
+	var form = document.getElementById("form1");
+	form.appendChild(input);
 }
 
-function saveAll() {
+/*function saveAll() {
 	var tag = document.getElementById("MVA_PPT_SUBIMAGE").childNodes;
 	var tag_arr = new Array();
 	for (var i = 0; i < tag.length; i++) {
 		tag_arr[i] = tag[i].textContent;
 	}
 	alert("Save Success!");
-	//var url = "mark.php?"+tag_arr;
+	//var url = "../mark.php?"+tag_arr;
 	//location.replace(url);
-}
+}*/
 
 function setButtonStyle() {
 	$(function() {

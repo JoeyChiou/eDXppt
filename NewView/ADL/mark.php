@@ -13,4 +13,5 @@
 	}
 	
 	$content->save("mark.xml");
+	header('Location: lms.php');
 ?>
