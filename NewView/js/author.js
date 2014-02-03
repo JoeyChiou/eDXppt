@@ -6,15 +6,15 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player, player2;
 function onYouTubeIframeAPIReady() {	
-	player =createPlayer('player','JCQs6JROANE');
-	player2 =createPlayer('player2','Ib7IMt0CUF4');
+	player = createPlayer('player','JCQs6JROANE');
+	player2 = createPlayer('player2','Ib7IMt0CUF4');
 }
 
 function createPlayer(divId,videoId){
 	width = $('#'+divId).parent().width()-50;
 	//height = $('#'+divId).parent().height();
 	var player = new YT.Player(divId, {
-		height : '100%',
+		height : '95%',
 		width : width,
 		videoId : videoId,
 		playerVars : {
@@ -29,8 +29,8 @@ function playVideo() {
 	player.pauseVideo();
 	player2.playVideo();
 	player2.pauseVideo();
-	setTimeout("player.playVideo()", 5000);
-	setTimeout("player2.playVideo()", 5000);
+	setTimeout("player.playVideo()", 3000);
+	setTimeout("player2.playVideo()", 3000);
 }
 
 function doNothing(){
@@ -48,15 +48,30 @@ function stopVideo() {
 }
 
 function previousVideo() {
-	alert("1:"+player.getPlayerState()+"2:"+player2.getPlayerState());
-	alert("previousVideo");
+	var ct = player.getCurrentTime();
+	var move_tag = 0;
+	
+	for(var i=0;i<mark_list.length;i++){
+		if(ct>mark_list[i]){
+			move_tag = mark_list[i];
+		}
+	}
+	goMark(move_tag);
 }
 
 function nextVideo() {
-	alert(player.getVideoLoadedFraction());
-	alert("nextVideo");
+	var ct = player.getCurrentTime();
+	var move_tag = 0;
+	
+	for(var i=(mark_list.length-1);i>=0;i--){
+		if(ct<mark_list[i]){
+			move_tag = mark_list[i];
+		}
+	}
+	goMark(move_tag);
 }
 
+var mark_list = new Array();
 function getMarks(){
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", "mark.xml", false);
@@ -71,6 +86,7 @@ function getMarks(){
 		button.textContent = "Section" + (i+1);
 		//button.className = "ui-widget-content tag";
 		button.setAttribute("onclick","javascript:goMark("+marks[i].textContent+")");
+		mark_list[i] = marks[i].textContent;
 		var tagContainer = document.getElementById("MVA_PPT_SUBIMAGE");
 		tagContainer.appendChild(button);
 		/*$(function() {
@@ -80,11 +96,11 @@ function getMarks(){
 }
 
 function goMark(second){
-				player.seekTo(second, true);
-				player.pauseVideo();
-				player2.seekTo(second, true);
-				player2.pauseVideo();
-				playVideo();
+	player.seekTo(second, true);
+	player.pauseVideo();
+	player2.seekTo(second, true);
+	player2.pauseVideo();
+	playVideo();
 }
 
 var ctime;

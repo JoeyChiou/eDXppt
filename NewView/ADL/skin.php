@@ -12,7 +12,7 @@
 	</head>
 
 	<body  LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
-		<table width="800" height="586" border="0" cellpadding="0" cellspacing="0" background="skin_img/adl.jpg">
+		<table width="800" height="600" border="0" cellpadding="0" cellspacing="0" background="skin_img/adl.jpg">
 			<tr>
 				<td width="599" height="467" rowspan="3" align="center" valign="middle">
 				<div align="center" id="player2">
