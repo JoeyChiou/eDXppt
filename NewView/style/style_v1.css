@@ -1,0 +1,23 @@
+table{
+	width:800px;
+	height:600px;
+	border:0px solid black;
+	padding: 0px;
+}
+
+table.ADL{
+	background-image:url('images/ADL/adl.jpg');
+	background-repeat:no-repeat;
+}
+
+table.sakura{
+	background-image:url('images/sakura/sakura.jpg');
+	background-repeat:no-repeat;
+}
+
+td.ADL_mainVideo{
+	width:599px;
+	height:467px;
+	text-align:center;
+	vertical-align:middle;
+}

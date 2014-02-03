@@ -129,16 +129,11 @@ function newLink() {
 	form.appendChild(input);
 }
 
-/*function saveAll() {
-	var tag = document.getElementById("MVA_PPT_SUBIMAGE").childNodes;
-	var tag_arr = new Array();
-	for (var i = 0; i < tag.length; i++) {
-		tag_arr[i] = tag[i].textContent;
-	}
-	alert("Save Success!");
-	//var url = "../mark.php?"+tag_arr;
-	//location.replace(url);
-}*/
+function selectSkin(){
+	var index = document.getElementById("skin_list").selectedIndex;
+	var skin = document.getElementById("skin_list").options;
+	location.href = "../"+skin[index].text+"/skin.html";
+}
 
 function setButtonStyle() {
 	$(function() {

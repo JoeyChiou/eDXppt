@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<title>LMS</title>
+		<title>Authoring Tool</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<!--MVA_SCRIPT-->
 		<script src="../style/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="../style/style.css">
 	</head>
 
-	<body  LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+	<body LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
 		<table width="800" height="600" border="0" cellpadding="0" cellspacing="0" background="skin_img/adl.jpg">
 			<tr>
 				<td width="599" height="467" rowspan="3" align="center" valign="middle">
@@ -44,7 +44,23 @@
 		</div>
 		<div class="button" id="Next" name="MVA_BTN_NEXT" style="position:absolute; width:63px; height:63px; z-index:5; left: 703px; top: 285px;"><img src="skin_img/btn_next.gif" width="63" height="63">
 		</div>
+
+		<form id="form1" method="POST" action="mark.php">
+		<div id="AdditionalButton">
+			<input type="button" value="Tag" onclick="javascript:newLink()">
+			<button type="submit">Save</button>
+		</div>
+		</form>
+
 		<div id="MVA_PPT_SUBIMAGE" name="MVA_PPT_SUBIMAGE" style="width:689px; height:125px; left: 57px; top: 485px;" nowrap ></div>
-		<script>getMarks();</script>
+		<div id="skin_list_area" style="left:600px;top:600px;position:absolute;">
+			<select id="skin_list">
+				<option value="Default">Default</option>
+				<option value="ADL" selected>ADL</option>
+				<option value="Sakura">Sakura</option>
+				<option value="Blue Planet">Blue Planet</option>
+			</select>
+			<button id="skin_option" onclick="javascript:selectSkin()">選擇</button>
+		</div>
 	</body>
 </html>
