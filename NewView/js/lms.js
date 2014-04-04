@@ -5,38 +5,19 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player, player2;
-/*function onYouTubeIframeAPIReady() {
-	//player = createPlayer('player','JCQs6JROANE');
-	//player = createPlayer('player2','Ib7IMt0CUF4');
-}*/
+function onYouTubeIframeAPIReady() {
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", "mark.xml", false);
+	xmlhttp.send();
+	xmlDoc = xmlhttp.responseXML;
 
-function setVideoCode(playerID) {
-	var codeID = prompt("Input the YouTube video code, please.", "default");	
-	
-	if(codeID!="default" && codeID!=""){
-		if(playerID == 1){
-			player = createPlayer('player', codeID);
-			var input = document.createElement("input");
-			input.type = "hidden";
-			input.name = "player";
-			input.value = codeID;
-			var form = document.getElementById("form1");
-			form.appendChild(input);
-		}else{
-			player2 = createPlayer('player2', codeID);
-			var input = document.createElement("input");
-			input.type = "hidden";
-			input.name = "player2";
-			input.value = codeID;
-			var form = document.getElementById("form1");
-			form.appendChild(input);
-		}
-	}else{
-		alert("Wrong!");
-	}
+	var players = xmlDoc.getElementsByTagName("player");
+	player = createPlayer('player', players[0].textContent);
+	player2 = createPlayer('player2', players[1].textContent);
 }
 
-function createPlayer(divId,videoId){
+
+function createPlayer(divId,videoId) {
 	width = $('#'+divId).parent().width()-50;
 	//height = $('#'+divId).parent().height();
 	var player = new YT.Player(divId, {
@@ -103,7 +84,7 @@ function getMarks(){
 	xmlhttp.open("GET", "mark.xml", false);
 	xmlhttp.send();
 	xmlDoc = xmlhttp.responseXML;
-				
+
 	var marks = xmlDoc.getElementsByTagName("Mark");
 	for(i=0;i<marks.length;i++){
 		var button = document.createElement("button");
@@ -133,32 +114,6 @@ var ctime;
 function getCurrentTime() {
 	ctime = player.getCurrentTime();
 	document.getElementById("MVA_TIME").textContent = ctime + " 秒";
-}
-
-function newLink() {
-	var button = document.createElement("div");
-	button.type = "button";
-	button.textContent = ctime + " 秒";
-	button.className = "ui-widget-content tag";
-	// button.id="tag";
-	var tagContainer = document.getElementById("MVA_PPT_SUBIMAGE");
-	tagContainer.appendChild(button);
-	$(function() {
-		$(button).button();
-	});
-	
-	var input = document.createElement("input");
-	input.type = "hidden";
-	input.name = "tag_arr[]";
-	input.value = ctime;
-	var form = document.getElementById("form1");
-	form.appendChild(input);
-}
-
-function selectSkin(){
-	var index = document.getElementById("skin_list").selectedIndex;
-	var skin = document.getElementById("skin_list").options;
-	location.href = "../"+skin[index].text+"/skin.html";
 }
 
 function setButtonStyle() {
